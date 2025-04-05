@@ -28,8 +28,7 @@
         }
         stage('tf_init') {
             steps {
-                  sh ''' cd TF_Projects/tf_backend 
-                         terraform init -reconfigure''' 
+                  sh ''' terraform init -reconfigure''' 
             }
         }
         stage('tf_plan') {
@@ -39,8 +38,8 @@
         }
         stage('tf_apply') {
             steps {
-                echo "this action is initiated ${action}"
-                sh '''terraform ${action} --auto-approve'''
+                sh '''echo "this action is initiated ${action}"
+                      terraform ${action} --auto-approve'''
             }
         }
     }
